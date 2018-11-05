@@ -1,12 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import LoginPage from './LoginPage';
+import HomePage from './HomePage'
+//import App from './App';
+//import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class MainPage extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { isLoggedIn: false };
+    this.logout = this.logout.bind(this);
+    this.login = this.login.bind(this);
+  }
+
+  logout(e) {
+    e.preventDefault();
+    this.setState({ isLoggedIn: false });
+  }
+
+  login(e) {
+    this.setState({ isLoggedIn: true });
+  }
+
+  render() {
+
+    const isLoggedIn = this.state.isLoggedIn;
+    let page;
+
+    if (isLoggedIn) {
+      page = <HomePage logoutHandler={this.logout} />;
+    } else {
+      page = <LoginPage loginHandler={this.login} />;
+    }
+    return (
+      <div>{page}</div>
+    );
+  }
+
+}
+
+ReactDOM.render(<MainPage />, document.getElementById("root"));
+
