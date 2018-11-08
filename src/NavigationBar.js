@@ -13,7 +13,7 @@ export default class NavigationBar extends Component {
                         className="nav-item nav-link active"
                         href="#"
                         key={item.name}
-                        onClick={this.props.onAddUserClicked}>{item.name}</a>
+                        onClick={item.handler}>{item.name}</a>
                 );
             } else {
                 buttons.push(
@@ -21,7 +21,7 @@ export default class NavigationBar extends Component {
                         className="nav-item nav-link"
                         href="#"
                         key={item.name}
-                        onClick={this.props.onUsersListClicked}>{item.name}</a>
+                        onClick={item.handler}>{item.name}</a>
                 );
             }
         });

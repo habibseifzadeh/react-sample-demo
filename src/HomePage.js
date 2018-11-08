@@ -42,23 +42,22 @@ export default class HomePage extends Component {
         //must be improved
         if(this.state.tab === ADD_USER) {
             navigationItems = [
-                {name: 'Add User', active: true},
-                {name: 'List Users'}
+                {name: 'Add User', handler: this.onAddUserClicked, active: true},
+                {name: 'List Users', handler: this.onUsersListClicked}
             ];
             mainPane = <AddUser 
                 onAddUserClicked={this.onAddUserClicked}
                 onUsersListClicked={this.onUsersListClicked} />
         } else {
             navigationItems = [
-                {name: 'Add User'},
-                {name: 'List Users', active: true}
+                {name: 'Add User', handler: this.onAddUserClicked},
+                {name: 'List Users', handler: this.onUsersListClicked, active: true}
             ];
             mainPane = <UsersList 
             onAddUserClicked={this.onAddUserClicked}
             onUsersListClicked={this.onUsersListClicked} />
         }
         
-
         return (
             <div>
                 <WelcomeBar 
