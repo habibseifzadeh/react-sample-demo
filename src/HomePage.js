@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import WelcomeBar from './WelcomeBar';
+import NavigationBar from './NavigationBar';
+import AddUser from './AddUser';
 
 export default class HomePage extends Component {
     constructor(props) {
@@ -6,26 +9,21 @@ export default class HomePage extends Component {
     }
 
     render() {
+
+        const navigationItems = [
+            {name: 'Add User', active: true},
+            {name: 'List Users'}
+        ];
+
         return (
             <div>
-                I am in the Home page!
-            <ActionLink handler={this.props.logoutHandler} />
+                <WelcomeBar username={this.props.username} />
+                <NavigationBar navigationItems={navigationItems} />
+                <AddUser />
             </div>
         );
     }
 
 }
 
-export class ActionLink extends Component {
-    constructor(props) {
-        super(props)
 
-    }
-
-    render() {
-        return (
-            <a href="#" onClick={this.props.handler}>Log out</a>
-        );
-    }
-
-}

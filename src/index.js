@@ -11,27 +11,27 @@ class MainPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { isLoggedIn: false };
+    this.state = { username: '' };
     this.logout = this.logout.bind(this);
     this.login = this.login.bind(this);
   }
 
   logout(e) {
     e.preventDefault();
-    this.setState({ isLoggedIn: false });
+    this.setState({ username: '' });
   }
 
-  login(e) {
-    this.setState({ isLoggedIn: true });
+  login(username) {
+    this.setState({ username: username });
   }
 
   render() {
 
-    const isLoggedIn = this.state.isLoggedIn;
+    const isLoggedIn = this.state.username !== '';
     let page;
 
     if (isLoggedIn) {
-      page = <HomePage logoutHandler={this.logout} />;
+      page = <HomePage username={this.state.username} logoutHandler={this.logout} />;
     } else {
       page = <LoginPage loginHandler={this.login} />;
     }

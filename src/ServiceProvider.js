@@ -14,4 +14,12 @@ export default class ServiceProvider {
             responseCallback(result === 'true' ? true : false);
         });
     }
+
+    authenticateMock(username, password, responseCallback) {
+        responseCallback(username === "habib" && password === "123");
+    }
+
+    addUserMock(username, password, responseCallback) {
+        responseCallback(username === "taha" && password === "123456");
+    }
 }
