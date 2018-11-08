@@ -5,9 +5,10 @@ export default class AddUserBox extends Component {
   render() {
 
     let errorMessage = this.props.errorMessage;
+    let password = this.props.password;
     let submitButton;
 
-    if (errorMessage === '') {
+    if (errorMessage === '' && password !== '') {
       submitButton = <input type="submit" className="btn btn-primary"></input>
     } else {
       submitButton = <input type="submit" disabled className="btn btn-primary"></input>

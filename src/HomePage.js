@@ -23,13 +23,11 @@ export default class HomePage extends Component {
     }
 
     onAddUserClicked(e) {
-        console.log("add user tab clicked");
         e.preventDefault();
         this.setState({tab: ADD_USER});
     }
 
     onUsersListClicked(e) {
-        console.log("user lists clicked");
         e.preventDefault();
         this.setState({tab: USERS_LIST});
     }

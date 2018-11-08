@@ -11,7 +11,7 @@ export default class AddUser extends Component {
             username: '',
             password: '',
             rePassword: '',
-            errorMessage: 'The password is too short!',
+            errorMessage: '',
             successful: false
         }
 
@@ -24,7 +24,7 @@ export default class AddUser extends Component {
     }
 
     onUsernameChanged(e) {
-        this.setState({ username: e.target.value });
+        this.setState({ username: e.target.value }, this.checkPassword);
     }
 
     onPasswordChanged(e) {
@@ -39,9 +39,9 @@ export default class AddUser extends Component {
         let password = this.state.password;
         let rePassword = this.state.rePassword;
 
-        this.setState({successful: false});
+        this.setState({ successful: false });
 
-        if (password.length < 6) {
+        if (password.length > 0 && password.length < 6) {
             this.setState({ errorMessage: 'The password is too short!' });
         } else if (password !== rePassword) {
             this.setState({ errorMessage: 'The passwords do not match!' });
@@ -52,9 +52,16 @@ export default class AddUser extends Component {
 
     onSubmitHandler(e) {
         e.preventDefault();
-        var service = new ServiceProvider();
-        service.addUserMock(this.state.username, this.state.password, this.addUserCallback);
-        
+        if (this.state.username === '') {
+            this.setState({
+                errorMessage: 'The username cannot be empty!',
+                successful: false
+            });
+        } else {
+            var service = new ServiceProvider();
+            service.addUserMock(this.state.username, this.state.password, this.addUserCallback);
+        }
+
     }
 
     addUserCallback(result) {
