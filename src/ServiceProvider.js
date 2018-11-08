@@ -22,4 +22,16 @@ export default class ServiceProvider {
     addUserMock(username, password, responseCallback) {
         responseCallback(username === "taha" && password === "123456");
     }
+
+    findAllUsers(responseCallback) {
+        responseCallback(
+            [
+                {username: 'habib', password: "123", email: 'habibseifzadeh@yahoo.com'},
+                {username: 'reza', password: "pass", email: 'rezaahmadi@gmail.com'},
+                {username: 'taha', password: "dfsdf", email: 'tahas@seifzadeh.ir'},
+                {username: 'marzieh', password: "nopass", email: 'marziehkhayam@gmail.com'},
+                {username: 'morteza', password: "123", email: 'morteza123@yahoo.com'},
+            ]
+        );
+    }
 }

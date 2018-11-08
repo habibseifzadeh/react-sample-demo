@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import LoginPage from './LoginPage';
 import HomePage from './HomePage'
-//import App from './App';
-//import * as serviceWorker from './serviceWorker';
-
 
 class MainPage extends React.Component {
 

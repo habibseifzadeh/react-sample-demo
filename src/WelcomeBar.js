@@ -7,7 +7,7 @@ export default class WelcomeBar extends Component {
     return (
       <div className="text-right">
         <WelcomeMessage username={this.props.username} />
-        <LogoutAction />
+        <LogoutAction logoutHandler={this.props.logoutHandler} />
       </div>
     )
   }

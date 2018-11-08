@@ -4,23 +4,26 @@ export default class NavigationBar extends Component {
     render() {
 
         const buttons = [];
-
+        
+        //it must be improved 
         this.props.navigationItems.forEach((item) => {
-                if(item.active) {
-                    buttons.push(
-                        <a 
-                    className="nav-item nav-link active" 
-                    href="#" 
-                    key={item.name}>{item.name}</a>
-                    );
-                } else {
-                    buttons.push(
-                        <a 
-                    className="nav-item nav-link" 
-                    href="#" 
-                    key={item.name}>{item.name}</a>
+            if (item.active) {
+                buttons.push(
+                    <a
+                        className="nav-item nav-link active"
+                        href="#"
+                        key={item.name}
+                        onClick={this.props.onAddUserClicked}>{item.name}</a>
                 );
-                }
+            } else {
+                buttons.push(
+                    <a
+                        className="nav-item nav-link"
+                        href="#"
+                        key={item.name}
+                        onClick={this.props.onUsersListClicked}>{item.name}</a>
+                );
+            }
         });
 
 

@@ -4,7 +4,9 @@ export default class LogoutAction extends Component {
     render() {
         return (
             <div className="d-inline">
-                <button>Logout</button>
+                <button 
+                    className="btn btn-danger" 
+                    onClick={this.props.logoutHandler}>Logout</button>
             </div>
         )
     }
